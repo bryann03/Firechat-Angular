@@ -1,8 +1,14 @@
 <div class="container mt-5">
     <h1 class="text-center">Instant chat</h1>
 
-    <app-login></app-login>
-    <!-- <div class="chat-window">
-        <app-chat></app-chat>
-    </div> -->
+    <div class="col-md-12 text-right" *ngIf="chatService.usuario.uid">
+        <button type="button" (click)="logout()" class="btn btn-danger">Salir</button>
+
+        <div class="chat-window">
+            <app-chat></app-chat>
+        </div>
+    </div>
+
+    <app-login *ngIf="!chatService.usuario.uid"></app-login>
+
 </div>

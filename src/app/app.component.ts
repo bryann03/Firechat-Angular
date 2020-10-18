@@ -1,16 +1,16 @@
+import { ChatService } from 'src/app/providers/chat.service';
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public chats: Observable<any[]>;
-  constructor(firestore: AngularFirestore) {
-    this.chats = firestore.collection('chats').valueChanges();
-  }
-  title = 'firechat';
+
+   constructor(public chatService: ChatService) { }
+
+   logout() {
+      this.chatService.logout();
+   }
 }
